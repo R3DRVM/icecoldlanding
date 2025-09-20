@@ -1,0 +1,16 @@
+{
+  "name": "icecoldlanding",
+  "version": "1.0.0",
+  "description": "Y2K Aesthetic Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000",
+    "serve": "npx serve -s . -l 3000"
+  },
+  "keywords": ["y2k", "aesthetic", "landing-page", "nft", "anime"],
+  "author": "Ice Cold Landing",
+  "license": "MIT"
+}
+
+
