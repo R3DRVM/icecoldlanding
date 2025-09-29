@@ -141,6 +141,236 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Add hover effects to new center layout social items
+    const socialItems = document.querySelectorAll('.social-item');
+    socialItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 3; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 8; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to navigation buttons
+    const navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 2; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 6; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to message inputs
+    const messageInputs = document.querySelectorAll('.message-input');
+    messageInputs.forEach(input => {
+        input.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 2; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        input.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 5; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to banners
+    const banners = document.querySelectorAll('.banner');
+    banners.forEach(banner => {
+        banner.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 3; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        banner.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 8; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to about icon items
+    const aboutIconItems = document.querySelectorAll('.about-icon-item');
+    aboutIconItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 3; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 6; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to profile image
+    const profileImage = document.querySelector('.main-profile-image');
+    if (profileImage) {
+        profileImage.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 5; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        profileImage.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 10; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('icybear says hi! ❄️');
+        });
+    }
+    
+    // Add hover effects to social icon circles
+    const socialIconCircles = document.querySelectorAll('.social-icon-circle');
+    socialIconCircles.forEach(circle => {
+        circle.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 3; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        circle.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 8; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('coming soon! ✨');
+        });
+    });
+    
+    // Add hover effects to schedule items
+    const scheduleItems = document.querySelectorAll('.schedule-item');
+    scheduleItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 2; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 5; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('stream coming soon! ❄️');
+        });
+    });
+    
+    // Add hover effects to countdown numbers
+    const countdownNumbers = document.querySelectorAll('.countdown-number');
+    countdownNumbers.forEach(number => {
+        number.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 3; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        number.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 6; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('countdown active! ⏰');
+        });
+    });
+    
+    // Add hover effects to border VTuber images
+    const borderImages = document.querySelectorAll('.border-image');
+    borderImages.forEach(image => {
+        image.addEventListener('mouseenter', function() {
+            // Create floating sparkles
+            for (let i = 0; i < 4; i++) {
+                createFloatingSparkle(this);
+            }
+        });
+        
+        image.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create click sparkle burst
+            for (let i = 0; i < 8; i++) {
+                createSparkleBurst(this);
+            }
+            
+            // Show coming soon message
+            showKawaiiMessage('icybear spotted! 🐻❄️');
+        });
+    });
+    
     function createFloatingSparkle(element) {
         const sparkle = document.createElement('div');
         sparkle.innerHTML = '<i data-lucide="sparkles"></i>';
