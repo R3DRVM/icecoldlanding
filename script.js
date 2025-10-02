@@ -747,7 +747,109 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
+    // Meme Cycling Functionality
+    const memeImages = [
+        'assets/memes/be nice copy.png',
+        'assets/memes/competition copy.png',
+        'assets/memes/do not estimate me copy.png',
+        'assets/memes/friendmaxxing copy.png',
+        'assets/memes/full of love copy.png',
+        'assets/memes/gangsta like me.png',
+        'assets/memes/its all about copy.png',
+        'assets/memes/love note copy.png',
+        'assets/memes/mog mode copy.png',
+        'assets/memes/N copy.png',
+        'assets/memes/normalize the void copy.png',
+        'assets/memes/rly proud of u copy.png',
+        'assets/memes/shooting you copy.png',
+        'assets/memes/ticker icy copy.png',
+        'assets/memes/trade offer copy.png',
+        'assets/memes/version of yourself copy.png'
+    ];
+    
+    const memeImage = document.getElementById('memeImage');
+    const memeButton = document.getElementById('memeButton');
+    
+    function getRandomMeme() {
+        const randomIndex = Math.floor(Math.random() * memeImages.length);
+        return memeImages[randomIndex];
+    }
+    
+    function showNewMeme() {
+        const newMemeSrc = getRandomMeme();
+        
+        // Add fade out effect
+        memeImage.style.opacity = '0';
+        
+        setTimeout(() => {
+            memeImage.src = newMemeSrc;
+            memeImage.style.opacity = '1';
+        }, 200);
+        
+        // Create sparkle burst effect
+        for (let i = 0; i < 8; i++) {
+            createSparkleBurst(memeButton);
+        }
+        
+        // Show kawaii message
+        showKawaiiMessage('new meme unlocked! ✨');
+    }
+    
+    if (memeButton) {
+        memeButton.addEventListener('click', showNewMeme);
+    }
+    
+    if (memeImage) {
+        memeImage.addEventListener('click', showNewMeme);
+    }
+    
+    // Auto-cycle memes every 10 seconds
+    setInterval(() => {
+        if (Math.random() < 0.3) { // 30% chance to auto-cycle
+            showNewMeme();
+        }
+    }, 10000);
+    
+    // Stay Hydrated Popup Functionality
+    const hydrationPopup = document.getElementById('hydrationPopup');
+    const closeHydrationPopup = document.getElementById('closeHydrationPopup');
+    const dismissHydration = document.getElementById('dismissHydration');
+    
+    function showHydrationPopup() {
+        hydrationPopup.classList.add('show');
+        
+        // Create sparkle burst effect
+        for (let i = 0; i < 12; i++) {
+            createSparkleBurst(hydrationPopup);
+        }
+    }
+    
+    function hideHydrationPopup() {
+        hydrationPopup.classList.remove('show');
+    }
+    
+    if (closeHydrationPopup) {
+        closeHydrationPopup.addEventListener('click', hideHydrationPopup);
+    }
+    
+    if (dismissHydration) {
+        dismissHydration.addEventListener('click', hideHydrationPopup);
+    }
+    
+    // Show hydration popup after 5 seconds
+    setTimeout(() => {
+        showHydrationPopup();
+    }, 5000);
+    
+    // Show hydration popup every 2 minutes
+    setInterval(() => {
+        if (Math.random() < 0.5) { // 50% chance
+            showHydrationPopup();
+        }
+    }, 120000);
+
     console.log('✨ Y2K Kawaii Dreamland Loaded! ✨');
     console.log('🎀 All sparkly interactions are ready! 🎀');
     console.log('💖 Click everything for magical effects! 💖');
+    console.log('🎭 Meme cycling is active! 🎭');
 });

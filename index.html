@@ -14,6 +14,9 @@
     <header class="scrapbook-header">
         <div class="header-content">
             <div class="brand-section">
+                <div class="brand-logo">
+                    <img src="assets/logo/logo - ticker icy copy.png" alt="ICY Logo" class="ticker-logo">
+                </div>
                 <h1 class="brand-title">icygoesbrrrrrrr</h1>
                 <div class="ticker-container">
                     <span class="ticker-label">$ICY</span>
@@ -73,6 +76,14 @@
         <div class="floating-vtuber vtuber-4">
             <img src="assets/vtuber4.png" alt="VTuber Character" class="tiny-image">
         </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-arrow">
+            <i data-lucide="chevron-down"></i>
+        </div>
+        <span class="scroll-text">scroll for more ✨</span>
     </div>
 
     <!-- Hero Section -->
@@ -373,6 +384,24 @@
                 </div>
             </div>
             
+            <!-- Meme Cycling Section -->
+            <div class="meme-cycling-section">
+                <div class="section-header">
+                    <div class="star-icon">⭐</div>
+                    <h3>Random Memes</h3>
+                    <div class="star-icon">⭐</div>
+                </div>
+                <div class="meme-container">
+                    <div class="meme-display" id="memeDisplay">
+                        <img src="assets/memes/be nice copy.png" alt="Random Meme" class="meme-image" id="memeImage">
+                    </div>
+                    <button class="meme-button" id="memeButton">
+                        <i data-lucide="shuffle"></i>
+                        <span>New Meme!</span>
+                    </button>
+                </div>
+            </div>
+            
             <div class="windows-container">
                 <!-- Window 1 -->
                 <div class="retro-window window-1">
@@ -451,108 +480,6 @@
         </div>
     </section>
 
-    <!-- Socials Section -->
-    <section class="socials">
-        <div class="socials-container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon"><i data-lucide="mail"></i></span>
-                    let's connect
-                    <span class="title-icon"><i data-lucide="mail"></i></span>
-                </h2>
-                <div class="pixel-divider">
-                    <div class="pixel-star"><i data-lucide="star"></i></div>
-                    <div class="pixel-star"><i data-lucide="star"></i></div>
-                    <div class="pixel-star"><i data-lucide="star"></i></div>
-                </div>
-            </div>
-            
-            <div class="socials-images">
-                <div class="social-image-container">
-                    <img src="assets/vtuber3.png" alt="VTuber Character" class="social-image">
-                </div>
-                <div class="social-image-container">
-                    <img src="assets/vtuber4.png" alt="VTuber Character" class="social-image-small">
-                </div>
-                <div class="social-image-container">
-                    <img src="assets/vtuber1.png" alt="VTuber Character" class="social-image-small">
-                </div>
-            </div>
-            
-            <div class="social-bubbles">
-                <a href="#" class="social-bubble twitter">
-                    <div class="bubble-icon"><i data-lucide="twitter"></i></div>
-                    <div class="bubble-text">X</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble discord">
-                    <div class="bubble-icon"><i data-lucide="message-circle"></i></div>
-                    <div class="bubble-text">Discord</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble pumpfun">
-                    <div class="bubble-icon"><i data-lucide="zap"></i></div>
-                    <div class="bubble-text">Pumpfun</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble dexscreener">
-                    <div class="bubble-icon"><i data-lucide="trending-up"></i></div>
-                    <div class="bubble-text">Dexscreener</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble twitch">
-                    <div class="bubble-icon"><i data-lucide="play"></i></div>
-                    <div class="bubble-text">Twitch</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble youtube">
-                    <div class="bubble-icon"><i data-lucide="youtube"></i></div>
-                    <div class="bubble-text">YouTube</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-                
-                <a href="#" class="social-bubble tiktok">
-                    <div class="bubble-icon"><i data-lucide="music"></i></div>
-                    <div class="bubble-text">tiktok</div>
-                    <div class="bubble-glow"></div>
-                    <div class="bubble-sparkles">
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                        <span class="sparkle"><i data-lucide="sparkles"></i></span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-background">
@@ -593,6 +520,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- Stay Hydrated Popup -->
+    <div class="hydration-popup" id="hydrationPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="water-icon">💧</div>
+                <h3>Stay Hydrated!</h3>
+                <button class="close-popup" id="closeHydrationPopup">×</button>
+            </div>
+            <div class="popup-body">
+                <p>Remember to drink water and take care of yourself! 💖</p>
+                <div class="water-bottle-animation">
+                    <div class="bottle">🍼</div>
+                    <div class="bubbles">
+                        <span class="bubble">💧</span>
+                        <span class="bubble">💧</span>
+                        <span class="bubble">💧</span>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <button class="popup-button" id="dismissHydration">Got it! ✨</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
