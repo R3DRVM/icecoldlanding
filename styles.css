@@ -14,9 +14,9 @@
 }
 
 body {
-    font-family: 'Fredoka', cursive;
+    font-family: 'Child Chat', 'Fredoka', cursive;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #E8F4FD 0%, #F0F8FF 25%, #E6F3FF 50%, #F0F8FF 75%, #E8F4FD 100%);
+    background: linear-gradient(135deg, #D1F4FF 0%, #E3D1FF 25%, #FED1FF 50%, #C6D5FE 75%, #D1F4FF 100%);
     min-height: 100vh;
     position: relative;
 }
@@ -82,6 +82,26 @@ body::before {
 .ticker-logo:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(184, 230, 255, 0.4);
+}
+
+.main-brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    animation: logo-float 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.main-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(184, 230, 255, 0.4));
 }
 
 @keyframes logo-float {
@@ -379,7 +399,7 @@ body::before {
 
 /* Hero Section */
 .hero {
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -1433,13 +1453,13 @@ body::before {
 
 /* Center Layout Section - Sakura Flower Style */
 .center-layout {
-    padding: 20px 5%;
+    padding: 15px 5%;
     position: relative;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh;
+    min-height: 50vh;
 }
 
 /* Border VTuber Images */
@@ -2507,15 +2527,23 @@ body::before {
     height: 80px;
 }
 
-.bottle {
-    font-size: 3rem;
-    animation: bottle-sway 3s ease-in-out infinite;
+.icebear-gif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
 }
 
-@keyframes bottle-sway {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
+.dance-gif {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    animation: icebear-bounce 2s ease-in-out infinite;
+}
+
+@keyframes icebear-bounce {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
 }
 
 .bubbles {
