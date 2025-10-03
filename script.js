@@ -810,6 +810,111 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 10000);
     
+    // VTuber Image Cycling Functionality
+    const vtuberImages = [
+        'assets/vtuber assets/nyoom.png',
+        'assets/vtuber assets/screenshot_20250716133155292.png',
+        'assets/vtuber assets/screenshot_20250716150739968.png',
+        'assets/vtuber assets/screenshot_20250716150945323.png',
+        'assets/vtuber assets/screenshot_20250716151016782.png',
+        'assets/vtuber assets/screenshot_20250716151525193.png',
+        'assets/vtuber assets/screenshot_20250716151624222.png',
+        'assets/vtuber assets/screenshot_20250716151726340.png',
+        'assets/vtuber assets/screenshot_20250716151916790.png',
+        'assets/vtuber assets/screenshot_20250728153209004.png',
+        'assets/vtuber assets/screenshot_20250728153228474.png',
+        'assets/vtuber assets/screenshot_20250729092153524.png',
+        'assets/vtuber assets/screenshot_20250731113132378.png',
+        'assets/vtuber assets/screenshot_20250731113148117.png',
+        'assets/vtuber assets/screenshot_20250804122644209.png',
+        'assets/vtuber assets/screenshot_20250804122732782.png',
+        'assets/vtuber assets/screenshot_20250805122610866.png',
+        'assets/vtuber assets/screenshot_20250808113041093.png',
+        'assets/vtuber assets/screenshot_20250810160428566.png',
+        'assets/vtuber assets/screenshot_20250916233701640.png',
+        'assets/vtuber assets/screenshot_20250916234154839.png',
+        'assets/vtuber assets/screenshot_20250917001157143.png',
+        'assets/vtuber assets/screenshot_20250917001441012.png',
+        'assets/vtuber assets/screenshot_20250917001716443.png',
+        'assets/vtuber assets/screenshot_20250917002917876.png',
+        'assets/vtuber assets/screenshot_20250917003137123.png',
+        'assets/vtuber assets/screenshot_20250917010509065.png',
+        'assets/vtuber assets/screenshot_20250920075726143.png',
+        'assets/vtuber assets/screenshot_20250920080830428.png',
+        'assets/vtuber assets/screenshot_20250920091252731.png',
+        'assets/vtuber assets/screenshot_20250920092130937.png'
+    ];
+    
+    const vtuberImage1 = document.getElementById('vtuberImage1');
+    const vtuberImage2 = document.getElementById('vtuberImage2');
+    const vtuberImage3 = document.getElementById('vtuberImage3');
+    
+    function getRandomVtuberImage() {
+        const randomIndex = Math.floor(Math.random() * vtuberImages.length);
+        return vtuberImages[randomIndex];
+    }
+    
+    function cycleVtuberImages() {
+        // Check if elements exist
+        if (!vtuberImage1 || !vtuberImage2 || !vtuberImage3) {
+            return;
+        }
+        
+        // Get three different random images
+        let image1Src = getRandomVtuberImage();
+        let image2Src = getRandomVtuberImage();
+        let image3Src = getRandomVtuberImage();
+        
+        // Ensure all three images are different
+        while (image2Src === image1Src) {
+            image2Src = getRandomVtuberImage();
+        }
+        while (image3Src === image1Src || image3Src === image2Src) {
+            image3Src = getRandomVtuberImage();
+        }
+        
+        // Add fade effect
+        [vtuberImage1, vtuberImage2, vtuberImage3].forEach(img => {
+            img.style.opacity = '0';
+        });
+        
+        setTimeout(() => {
+            vtuberImage1.src = image1Src;
+            vtuberImage2.src = image2Src;
+            vtuberImage3.src = image3Src;
+            
+            [vtuberImage1, vtuberImage2, vtuberImage3].forEach(img => {
+                img.style.opacity = '1';
+            });
+        }, 200);
+        
+        // Create sparkle burst effect
+        for (let i = 0; i < 6; i++) {
+            createSparkleBurst(vtuberImage1);
+        }
+    }
+    
+    // Add click functionality to VTuber images
+    if (vtuberImage1) {
+        vtuberImage1.addEventListener('click', cycleVtuberImages);
+    }
+    if (vtuberImage2) {
+        vtuberImage2.addEventListener('click', cycleVtuberImages);
+    }
+    if (vtuberImage3) {
+        vtuberImage3.addEventListener('click', cycleVtuberImages);
+    }
+    
+    // Auto-cycle VTuber images every 15 seconds
+    setInterval(() => {
+        if (Math.random() < 0.4) { // 40% chance to auto-cycle
+            cycleVtuberImages();
+        }
+    }, 15000);
+    
+    // Make function globally accessible for test button
+    window.cycleVtuberImages = cycleVtuberImages;
+    
     // Stay Hydrated Popup Functionality
     const hydrationPopup = document.getElementById('hydrationPopup');
     const closeHydrationPopup = document.getElementById('closeHydrationPopup');

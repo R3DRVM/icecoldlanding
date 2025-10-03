@@ -70,8 +70,8 @@ body::before {
 }
 
 .ticker-logo {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     border-radius: 50%;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -470,20 +470,38 @@ body::before {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    color: white;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
     position: relative;
 }
 
+.hero-brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hero-main-logo {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    animation: logo-float 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.hero-main-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
 .title-line-1, .title-line-2, .title-line-3 {
     display: block;
-    background: linear-gradient(45deg, #FF69B4, #87CEEB, #DDA0DD);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #FF69B4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     animation: title-glow 3s ease-in-out infinite;
 }
 
@@ -729,6 +747,7 @@ body::before {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     border: 3px solid rgba(255, 182, 193, 0.3);
+    cursor: pointer;
 }
 
 .highlight-image:hover {
@@ -745,6 +764,7 @@ body::before {
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     border: 2px solid rgba(255, 182, 193, 0.4);
+    cursor: pointer;
 }
 
 .highlight-image-small:hover {
