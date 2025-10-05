@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const deltaY = mouseY - lastMouseY;
         mouseVelocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         
-        // Create sparkle trail more frequently for wand-like effect
-        const sparkleChance = Math.min(0.3 + mouseVelocity * 0.01, 0.8);
+        // Optimized cursor sparkle trail - much less frequent
+        const sparkleChance = Math.min(0.05 + mouseVelocity * 0.002, 0.15);
         if (Math.random() < sparkleChance) {
             createMagicalSparkleTrail(mouseX, mouseY, mouseVelocity);
         }
         
-        // Create magical burst on fast movement
-        if (mouseVelocity > 20) {
+        // Optimized magical burst - only on very fast movement
+        if (mouseVelocity > 60) {
             createMagicalBurst(mouseX, mouseY);
         }
         
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const sparkle = document.createElement('div');
         
         // More magical icon types
-        const iconTypes = ['sparkles', 'star', 'zap', 'wand-2', 'magic-wand'];
+        const iconTypes = ['star', 'snowflake'];
         const iconType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
         sparkle.innerHTML = `<i data-lucide="${iconType}"></i>`;
         
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function createMagicalBurst(x, y) {
         // Create multiple sparkles in a burst pattern
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 4; i++) {
             setTimeout(() => {
                 const angle = (i / 8) * Math.PI * 2;
                 const distance = Math.random() * 30 + 10;
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.appendChild(ripple);
             
             // Create sparkle burst
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 4; i++) {
                 createSparkleBurst(this);
             }
             
@@ -168,51 +168,51 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // Add hover effects to social bubbles
-    const socialBubbles = document.querySelectorAll('.social-bubble');
-    socialBubbles.forEach(bubble => {
-        bubble.addEventListener('mouseenter', function() {
-            // Create floating sparkles
-            for (let i = 0; i < 5; i++) {
-                createFloatingSparkle(this);
-            }
-        });
-        
-        bubble.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create click sparkle burst
-            for (let i = 0; i < 12; i++) {
-                createSparkleBurst(this);
-            }
-            
-            // Show coming soon message
-            showKawaiiMessage('coming soon! ✨');
-        });
-    });
+    // Disabled hover effects for better performance
+    // const socialBubbles = document.querySelectorAll('.social-bubble');
+    // socialBubbles.forEach(bubble => {
+    //     bubble.addEventListener('mouseenter', function() {
+    //         // Create floating sparkles
+    //         for (let i = 0; i < 2; i++) {
+    //             createFloatingSparkle(this);
+    //         }
+    //     });
+    //     
+    //     bubble.addEventListener('click', function(e) {
+    //         e.preventDefault();
+    //         
+    //         // Create click sparkle burst
+    //         for (let i = 0; i < 6; i++) {
+    //             createSparkleBurst(this);
+    //         }
+    //         
+    //         // Show coming soon message
+    //         showKawaiiMessage('coming soon! ✨');
+    //     });
+    // });
     
-    // Add hover effects to new center layout social items
-    const socialItems = document.querySelectorAll('.social-item');
-    socialItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            // Create floating sparkles
-            for (let i = 0; i < 3; i++) {
-                createFloatingSparkle(this);
-            }
-        });
-        
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create click sparkle burst
-            for (let i = 0; i < 8; i++) {
-                createSparkleBurst(this);
-            }
-            
-            // Show coming soon message
-            showKawaiiMessage('coming soon! ✨');
-        });
-    });
+    // Disabled hover effects for better performance
+    // const socialItems = document.querySelectorAll('.social-item');
+    // socialItems.forEach(item => {
+    //     item.addEventListener('mouseenter', function() {
+    //         // Create floating sparkles
+    //         for (let i = 0; i < 1; i++) {
+    //             createFloatingSparkle(this);
+    //         }
+    //     });
+    //     
+    //     item.addEventListener('click', function(e) {
+    //         e.preventDefault();
+    //         
+    //         // Create click sparkle burst
+    //         for (let i = 0; i < 4; i++) {
+    //             createSparkleBurst(this);
+    //         }
+    //         
+    //         // Show coming soon message
+    //         showKawaiiMessage('coming soon! ✨');
+    //     });
+    // });
     
     // Add hover effects to navigation buttons
     const navButtons = document.querySelectorAll('.nav-button');
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     banners.forEach(banner => {
         banner.addEventListener('mouseenter', function() {
             // Create floating sparkles
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 1; i++) {
                 createFloatingSparkle(this);
             }
         });
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Create click sparkle burst
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 4; i++) {
                 createSparkleBurst(this);
             }
             
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     aboutIconItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
             // Create floating sparkles
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 1; i++) {
                 createFloatingSparkle(this);
             }
         });
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (profileImage) {
         profileImage.addEventListener('mouseenter', function() {
             // Create floating sparkles
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 2; i++) {
                 createFloatingSparkle(this);
             }
         });
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Create click sparkle burst
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 createSparkleBurst(this);
             }
             
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
     socialIconCircles.forEach(circle => {
         circle.addEventListener('mouseenter', function() {
             // Create floating sparkles
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 1; i++) {
                 createFloatingSparkle(this);
             }
         });
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Create click sparkle burst
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 4; i++) {
                 createSparkleBurst(this);
             }
             
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
     countdownNumbers.forEach(number => {
         number.addEventListener('mouseenter', function() {
             // Create floating sparkles
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 1; i++) {
                 createFloatingSparkle(this);
             }
         });
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Create click sparkle burst
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 4; i++) {
                 createSparkleBurst(this);
             }
             
