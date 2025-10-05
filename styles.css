@@ -317,20 +317,23 @@ body::before {
 }
 
 .dexscreener-link {
-    margin-top: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .dexscreener-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: linear-gradient(135deg, #B8E6FF, #A8D8FF);
     color: #2C3E50;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -340,8 +343,8 @@ body::before {
 }
 
 .dexscreener-logo {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
 /* Updated CTA Buttons */
@@ -467,6 +470,10 @@ body::before {
 .hero-text {
     flex: 1;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-title {
@@ -493,10 +500,6 @@ body::before {
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
 
-.hero-main-logo:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
-}
 
 .title-line-1, .title-line-2, .title-line-3 {
     display: block;
@@ -546,12 +549,14 @@ body::before {
     margin-bottom: 40px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     line-height: 1.6;
+    text-align: center;
 }
 
 .hero-buttons {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .follow-button, .join-button {
@@ -1907,6 +1912,7 @@ body::before {
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     flex-shrink: 0;
+    text-decoration: none;
 }
 
 .social-icon-circle:hover {
@@ -2881,3 +2887,9 @@ body::before {
         bottom: 3%;
     }
 }
+/* Frost Cursor Effect */
+.frost-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(184, 230, 255, 0.8) 0%, rgba(168, 216, 255, 0.4) 50%, transparent 100%);

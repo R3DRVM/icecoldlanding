@@ -6,30 +6,67 @@ document.addEventListener('DOMContentLoaded', function() {
         lucide.createIcons();
     }
     
-    // Add sparkle trail effect on mouse move
+    // Enhanced magical wand-like sparkle trail effect
     let mouseX = 0, mouseY = 0;
+    let lastMouseX = 0, lastMouseY = 0;
+    let mouseVelocity = 0;
+    
     document.addEventListener('mousemove', function(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
         
-        // Create sparkle trail occasionally
-        if (Math.random() < 0.15) {
-            createSparkleTrail(mouseX, mouseY);
+        // Calculate mouse velocity for dynamic effects
+        const deltaX = mouseX - lastMouseX;
+        const deltaY = mouseY - lastMouseY;
+        mouseVelocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Create sparkle trail more frequently for wand-like effect
+        const sparkleChance = Math.min(0.3 + mouseVelocity * 0.01, 0.8);
+        if (Math.random() < sparkleChance) {
+            createMagicalSparkleTrail(mouseX, mouseY, mouseVelocity);
         }
+        
+        // Create magical burst on fast movement
+        if (mouseVelocity > 20) {
+            createMagicalBurst(mouseX, mouseY);
+        }
+        
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
     });
     
-    function createSparkleTrail(x, y) {
+    function createMagicalSparkleTrail(x, y, velocity) {
         const sparkle = document.createElement('div');
-        const iconType = Math.random() < 0.5 ? 'sparkles' : 'star';
+        
+        // More magical icon types
+        const iconTypes = ['sparkles', 'star', 'zap', 'wand-2', 'magic-wand'];
+        const iconType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
         sparkle.innerHTML = `<i data-lucide="${iconType}"></i>`;
+        
         sparkle.style.position = 'fixed';
         sparkle.style.left = x + 'px';
         sparkle.style.top = y + 'px';
         sparkle.style.pointerEvents = 'none';
-        sparkle.style.fontSize = (Math.random() * 15 + 10) + 'px';
+        
+        // Dynamic sizing based on velocity
+        const baseSize = 12;
+        const velocitySize = Math.min(velocity * 0.3, 15);
+        sparkle.style.fontSize = (baseSize + velocitySize) + 'px';
+        
         sparkle.style.zIndex = '1000';
-        sparkle.style.animation = 'sparkleTrail 2s ease-out forwards';
-        sparkle.style.color = ['#FF69B4', '#87CEEB', '#DDA0DD', '#FFD700'][Math.floor(Math.random() * 4)];
+        sparkle.style.animation = 'magicalSparkleTrail 2.5s ease-out forwards';
+        
+        // Enhanced magical colors
+        const magicalColors = [
+            '#FF69B4', '#87CEEB', '#DDA0DD', '#FFD700', 
+            '#FFB6C1', '#E6E6FA', '#F0E68C', '#98FB98',
+            '#FFA07A', '#20B2AA', '#FF6347', '#9370DB'
+        ];
+        sparkle.style.color = magicalColors[Math.floor(Math.random() * magicalColors.length)];
+        
+        // Add magical glow effect
+        sparkle.style.filter = 'drop-shadow(0 0 8px currentColor)';
+        sparkle.style.textShadow = '0 0 10px currentColor';
         
         document.body.appendChild(sparkle);
         
@@ -40,7 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         setTimeout(() => {
             sparkle.remove();
-        }, 2000);
+        }, 2500);
+    }
+    
+    function createMagicalBurst(x, y) {
+        // Create multiple sparkles in a burst pattern
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                const angle = (i / 8) * Math.PI * 2;
+                const distance = Math.random() * 30 + 10;
+                const burstX = x + Math.cos(angle) * distance;
+                const burstY = y + Math.sin(angle) * distance;
+                createMagicalSparkleTrail(burstX, burstY, 25);
+            }, i * 30);
+        }
     }
     
     // Add click effects to buttons
@@ -683,18 +733,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add CSS animations dynamically
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes sparkleTrail {
-            0% {
-                opacity: 1;
-                transform: scale(0) rotate(0deg);
+        @keyframes magicalSparkleTrail {
+            0% { 
+                opacity: 1; 
+                transform: scale(1) rotate(0deg) translateY(0);
+                filter: drop-shadow(0 0 8px currentColor) brightness(1);
             }
-            50% {
-                opacity: 0.8;
-                transform: scale(1) rotate(180deg);
+            25% { 
+                opacity: 0.9; 
+                transform: scale(1.2) rotate(90deg) translateY(-5px);
+                filter: drop-shadow(0 0 12px currentColor) brightness(1.2);
             }
-            100% {
-                opacity: 0;
-                transform: scale(0.5) rotate(360deg);
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.1) rotate(180deg) translateY(-10px);
+                filter: drop-shadow(0 0 15px currentColor) brightness(1.1);
+            }
+            75% { 
+                opacity: 0.4; 
+                transform: scale(0.8) rotate(270deg) translateY(-15px);
+                filter: drop-shadow(0 0 10px currentColor) brightness(0.8);
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.3) rotate(360deg) translateY(-25px);
+                filter: drop-shadow(0 0 5px currentColor) brightness(0.5);
             }
         }
         
@@ -764,7 +827,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'assets/memes/shooting you copy.png',
         'assets/memes/ticker icy copy.png',
         'assets/memes/trade offer copy.png',
-        'assets/memes/version of yourself copy.png'
+        'assets/memes/version of yourself copy.png',
+        'assets/memes/absolute cinema copy.png',
+        'assets/memes/get a load of this guy copy.png',
+        'assets/memes/no copy.png'
     ];
     
     const memeImage = document.getElementById('memeImage');
@@ -915,6 +981,61 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make function globally accessible for test button
     window.cycleVtuberImages = cycleVtuberImages;
     
+    // Smol Poses Cycling Functionality
+    const smolPosesImages = [
+        'assets/smol poses for site/display1 copy.png',
+        'assets/smol poses for site/display2 copy.png',
+        'assets/smol poses for site/screenshot_20250716150945323 copy.png',
+        'assets/smol poses for site/screenshot_20250716151624222 copy.png',
+        'assets/smol poses for site/screenshot_20250716151916790 copy.png',
+        'assets/smol poses for site/screenshot_20250728153228474 copy.png',
+        'assets/smol poses for site/screenshot_20250729092153524 copy.png',
+        'assets/smol poses for site/screenshot_20250804122732782 copy.png',
+        'assets/smol poses for site/screenshot_20250808113041093 copy.png',
+        'assets/smol poses for site/screenshot_20250917001157143 copy.png',
+        'assets/smol poses for site/screenshot_20250917001716443 copy.png',
+        'assets/smol poses for site/screenshot_20250920080830428 copy.png',
+        'assets/smol poses for site/screenshot_20251003121737306 copy.png'
+    ];
+    
+    const floatingVtuberImages = document.querySelectorAll('.floating-vtuber img');
+    
+    function getRandomSmolPose() {
+        const randomIndex = Math.floor(Math.random() * smolPosesImages.length);
+        return smolPosesImages[randomIndex];
+    }
+    
+    function cycleSmolPoses() {
+        floatingVtuberImages.forEach(img => {
+            const newPoseSrc = getRandomSmolPose();
+            
+            // Add fade effect
+            img.style.opacity = '0';
+            
+            setTimeout(() => {
+                img.src = newPoseSrc;
+                img.style.opacity = '1';
+            }, 200);
+        });
+        
+        // Create sparkle burst effect
+        floatingVtuberImages.forEach(img => {
+            for (let i = 0; i < 3; i++) {
+                createSparkleBurst(img);
+            }
+        });
+    }
+    
+    // Auto-cycle smol poses every 20 seconds
+    setInterval(() => {
+        if (Math.random() < 0.3) { // 30% chance to auto-cycle
+            cycleSmolPoses();
+        }
+    }, 20000);
+    
+    // Make function globally accessible
+    window.cycleSmolPoses = cycleSmolPoses;
+    
     // Stay Hydrated Popup Functionality
     const hydrationPopup = document.getElementById('hydrationPopup');
     const closeHydrationPopup = document.getElementById('closeHydrationPopup');
@@ -958,3 +1079,100 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('💖 Click everything for magical effects! 💖');
     console.log('🎭 Meme cycling is active! 🎭');
 });
+    // Frost Cursor Effect
+    let frostCursor = null;
+    let frostTrails = [];
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let mouseVelocity = 0;
+    
+    function createFrostCursor() {
+        frostCursor = document.createElement('div');
+        frostCursor.className = 'frost-cursor';
+        document.body.appendChild(frostCursor);
+        
+        // Create trail elements
+        for (let i = 0; i < 5; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'frost-cursor-trail';
+            frostTrails.push(trail);
+            document.body.appendChild(trail);
+        }
+    }
+    
+    function updateFrostCursor(e) {
+        if (!frostCursor) return;
+        
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calculate velocity for dynamic effects
+        const deltaX = mouseX - lastMouseX;
+        const deltaY = mouseY - lastMouseY;
+        mouseVelocity = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Update main cursor
+        frostCursor.style.left = mouseX - 10 + 'px';
+        frostCursor.style.top = mouseY - 10 + 'px';
+        
+        // Scale cursor based on velocity
+        const scale = Math.min(1 + mouseVelocity * 0.01, 1.5);
+        frostCursor.style.transform = `scale(${scale})`;
+        
+        // Update trails with delay
+        frostTrails.forEach((trail, index) => {
+            const delay = (index + 1) * 0.05;
+            setTimeout(() => {
+                trail.style.left = mouseX - 3 + 'px';
+                trail.style.top = mouseY - 3 + 'px';
+                trail.style.opacity = Math.max(0.1, 1 - (index * 0.2));
+            }, delay * 1000);
+        });
+        
+        // Create frost particles occasionally
+        if (Math.random() < 0.3) {
+            createFrostParticle(mouseX, mouseY);
+        }
+        
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+    }
+    
+    function createFrostParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'frost-particle frost-particle-float';
+        particle.style.left = x + (Math.random() - 0.5) * 20 + 'px';
+        particle.style.top = y + (Math.random() - 0.5) * 20 + 'px';
+        document.body.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 1500);
+    }
+    
+    function hideFrostCursor() {
+        if (frostCursor) {
+            frostCursor.style.opacity = '0';
+        }
+        frostTrails.forEach(trail => {
+            trail.style.opacity = '0';
+        });
+    }
+    
+    function showFrostCursor() {
+        if (frostCursor) {
+            frostCursor.style.opacity = '1';
+        }
+        frostTrails.forEach(trail => {
+            trail.style.opacity = '1';
+        });
+    }
+    
+    // Initialize frost cursor
+    createFrostCursor();
+    
+    // Add event listeners
+    document.addEventListener('mousemove', updateFrostCursor);
