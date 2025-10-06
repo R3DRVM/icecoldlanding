@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function createMagicalSparkleTrail(x, y, velocity) {
         const sparkle = document.createElement('div');
         
-        // More magical icon types
-        const iconTypes = ['star', 'snowflake'];
+        // More magical icon types - pawprints, snowflakes, hearts, and pandas (bear-like)
+        const iconTypes = ['pawprint', 'snowflake', 'heart', 'panda'];
         const iconType = iconTypes[Math.floor(Math.random() * iconTypes.length)];
         sparkle.innerHTML = `<i data-lucide="${iconType}"></i>`;
         
@@ -1079,6 +1079,24 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('💖 Click everything for magical effects! 💖');
     console.log('🎭 Meme cycling is active! 🎭');
 });
+
+// Copy Contract Address Function
+function copyContractAddress() {
+    const contractAddress = document.getElementById('contractAddress').textContent;
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(contractAddress).then(() => {
+        // Show success message
+        showKawaiiMessage('Contract address copied! ✨');
+        
+        // Add sparkle effect to copy button
+        const copyBtn = document.querySelector('.copy-btn');
+        createSparkleBurst(copyBtn);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        showKawaiiMessage('Copy failed! Try again 💔');
+    });
+}
     // Frost Cursor Effect
     let frostCursor = null;
     let frostTrails = [];

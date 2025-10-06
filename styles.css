@@ -1227,6 +1227,49 @@ body::before {
     padding: 25px;
     background: linear-gradient(135deg, #FFE4E1, #F0E6FF);
     min-height: 200px;
+    position: relative;
+}
+
+/* Coming Soon Overlay */
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+.coming-soon-text {
+    font-family: 'Fredoka', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8A2BE2;
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.coming-soon-icon {
+    font-size: 2rem;
+    animation: sparkle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sparkle-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.window-content-blurred {
+    filter: blur(3px);
+    opacity: 0.6;
 }
 
 .video-preview {
@@ -1663,12 +1706,13 @@ body::before {
     text-align: center;
 }
 
+/* Updated border color for VTuber profile image - cache bust */
 .main-profile-image {
     width: 200px;
     height: 250px;
     object-fit: cover;
     border-radius: 15px;
-    border: 3px solid #FFB6C1;
+    border: 3px solid #e3d1ff !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
 }
@@ -1774,6 +1818,75 @@ body::before {
 @keyframes snowflake-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Reminders Section */
+.reminders-section {
+    margin-top: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.reminders-content {
+    background: rgba(184, 230, 255, 0.1);
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid rgba(184, 230, 255, 0.3);
+    text-align: center;
+}
+
+.reminders-intro {
+    margin-bottom: 6px;
+}
+
+.reminders-intro p {
+    color: #666;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.reminders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.reminder-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 0;
+    transition: all 0.3s ease;
+}
+
+.reminder-item:hover {
+    transform: translateX(2px);
+}
+
+.reminder-heart {
+    font-size: 1rem;
+    width: 16px;
+    text-align: center;
+}
+
+.reminder-text {
+    color: #8A2BE2;
+    font-weight: 600;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+/* Heart color animations */
+.heart-blue { animation: heart-pulse 2s ease-in-out infinite; }
+.heart-purple { animation: heart-pulse 2s ease-in-out infinite 0.2s; }
+.heart-white { animation: heart-pulse 2s ease-in-out infinite 0.4s; }
+.heart-green { animation: heart-pulse 2s ease-in-out infinite 0.6s; }
+.heart-pink { animation: heart-pulse 2s ease-in-out infinite 0.8s; }
+
+@keyframes heart-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 /* Schedule Section */
@@ -1918,6 +2031,33 @@ body::before {
 .social-icon-circle:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 10px 25px rgba(184, 230, 255, 0.4);
+}
+
+.social-icon-circle.coming-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.social-icon-circle.coming-soon::after {
+    content: 'Coming Soon';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: #8A2BE2;
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(184, 230, 255, 0.3);
+}
+
+.social-icon-circle.coming-soon:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .social-icon-circle:nth-child(1) { animation-delay: 0s; }
