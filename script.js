@@ -1078,6 +1078,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎀 All sparkly interactions are ready! 🎀');
     console.log('💖 Click everything for magical effects! 💖');
     console.log('🎭 Meme cycling is active! 🎭');
+    
+    // Initialize live price updates
+    initLivePriceUpdates();
 });
 
 // Copy Contract Address Function
@@ -1096,6 +1099,75 @@ function copyContractAddress() {
         console.error('Failed to copy: ', err);
         showKawaiiMessage('Copy failed! Try again 💔');
     });
+}
+
+// Live Price Update Function
+async function updateLivePrice() {
+    try {
+        // Using Dexscreener API for Solana tokens
+        const contractAddress = 'G4kx7gW1anhvjGSuoPDg5LZvkN1oMAx7R4cch5jRpump';
+        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
+        
+        if (!response.ok) {
+            throw new Error('API request failed');
+        }
+        
+        const data = await response.json();
+        
+        if (data.pairs && data.pairs.length > 0) {
+            const pair = data.pairs[0]; // Get the first (most liquid) pair
+            
+            const price = parseFloat(pair.priceUsd);
+            const priceChange24h = parseFloat(pair.priceChange?.h24 || 0);
+            
+            // Update price display
+            const priceElement = document.getElementById('livePrice');
+            const changeElement = document.getElementById('liveChange');
+            
+            if (priceElement && changeElement) {
+                // Format price (show more decimals for small prices)
+                let formattedPrice;
+                if (price < 0.001) {
+                    formattedPrice = `$${price.toFixed(6)}`;
+                } else if (price < 0.01) {
+                    formattedPrice = `$${price.toFixed(5)}`;
+                } else {
+                    formattedPrice = `$${price.toFixed(4)}`;
+                }
+                
+                priceElement.textContent = formattedPrice;
+                
+                // Update change percentage
+                const changePercent = priceChange24h.toFixed(2);
+                const changeText = priceChange24h >= 0 ? `+${changePercent}%` : `${changePercent}%`;
+                changeElement.textContent = changeText;
+                
+                // Update color based on change
+                changeElement.className = `ticker-change ${priceChange24h >= 0 ? 'positive' : 'negative'}`;
+                
+                // Add subtle animation on update
+                priceElement.style.transform = 'scale(1.05)';
+                changeElement.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    priceElement.style.transform = 'scale(1)';
+                    changeElement.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+    } catch (error) {
+        console.log('Price update failed:', error);
+        // Keep existing values if API fails
+    }
+}
+
+// Initialize live price updates
+function initLivePriceUpdates() {
+    // Update immediately
+    updateLivePrice();
+    
+    // Update every 30 seconds
+    setInterval(updateLivePrice, 30000);
 }
     // Frost Cursor Effect
     let frostCursor = null;

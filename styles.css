@@ -146,6 +146,11 @@ body::before {
     font-weight: 600;
 }
 
+.ticker-change.negative {
+    color: #E74C3C;
+    font-weight: 600;
+}
+
 .header-stickers {
     display: flex;
     gap: 15px;
